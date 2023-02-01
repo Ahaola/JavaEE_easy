@@ -11,7 +11,11 @@ public class HelloServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         System.out.println("hello servlet");//这个是让服务器在自己的控制台打印
         //如何在页面打印？
-        //resp是响应对象，getWriter其实是返回了一个Writer对象(字符流对象)，writer是写数据的方法
+        //1、resp是响应对象，getWriter其实是返回了一个Writer对象(字符流对象)，writer是写数据的方法
+        //2、如果不给响应对象中设置任何内容，这个时候就会出现空白页面
         resp.getWriter().write("hello servlet"+System.currentTimeMillis());
+
+//        String s = null;
+//        System.out.println("hello world"+s.length());
     }
 }
