@@ -8,15 +8,43 @@
     <title>Document</title>
 </head>
 <body>
+    <!-- <form action="postGetParameter" method="post">
+        <input type="text" name="userid">
+        <input type="text" name="classid">
+        <input type="submit" value="提交">
+    </form> -->
+
+            <!--要想构造一个json格式的请求，使用ajax-->
+            <input type="text" id="userId">
+            <input type="text" id="classId">
+            <input type="button" value="提交" id="submit">
+
     <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
     <script>
-        $.ajax({
-            type: 'post',
-            url: 'method',
-            success: function(body){
-                console.log(body);
-            }
-        });
+        // $.ajax({
+        //     type: 'post',
+        //     url: 'method',
+        //     success: function(body){
+        //         console.log(body);
+        //     }
+        // });
+        let userIdInput = document.querySelector('#userId');
+        let classIdInput = document.querySelector('#classId');
+        let button = document.querySelector('#submit');
+        button.onclick = function() {
+            $.ajax({
+                type: 'post',
+                url: 'postJson',
+                contentType: 'application/json',
+                data: JSON.stringify({
+                    userId: userIdInput.value,
+                    classId: classIdInput.value
+                }),
+                success: function(body) {
+                    console.log(body);
+                }
+            });
+        }
     </script>
 </body>
 </html>
